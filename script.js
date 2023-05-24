@@ -22,6 +22,8 @@ Needs the ff:
 
     //user input 
 
+    
+
     function uIn() {
 
     let user = prompt("Rock, Paper, Scissors!");
@@ -31,7 +33,6 @@ Needs the ff:
     switch(true) {
       
       case display == "ROCK":
-      case display == "SCISSOR":
       case display == "SCISSORS":
       case display == "PAPER":
         return (display);
@@ -44,14 +45,14 @@ Needs the ff:
 
   }
    
-   let userAns = uIn();
+   let playerSelection = uIn();
 
    console.log(uIn());
 
     //random input
 
     
-    function randAns() {
+    function getComputerChoice() {
       const rps = ["ROCK", "PAPER", "SCISSORS"];
 
     
@@ -59,31 +60,42 @@ Needs the ff:
       return (rps[random]);
     }
 
-    let select = randAns();
+    let computerSelection = getComputerChoice();
 
-    console.log(select);
+    console.log(computerSelection);
 
-    let lose = "YOU LOSE :(";
+    
 
-    let win = "YOU WIN! :DD";
+    
 
+    function round(playerSelection, computerSelection) {
 
-    if (select==userAns) {
+      let lose = "You lose! "+computerSelection+" beats "+playerSelection+" :(";
+      let win = "YOU WIN! :DD";
+
+    if (computerSelection==playerSelection) {
       console.log("IT'S A TIE!")
     }
-    else if (select=="ROCK">userAns=="SCISSORS") {
+    else if (computerSelection=="ROCK">playerSelection=="SCISSORS") {
       console.log(lose)
     }
-    else if (select=="SCISSORS">userAns=="PAPER") {
+    else if (computerSelection=="SCISSORS">playerSelection=="PAPER") {
       console.log(lose)
     }
-    else if (select=="PAPER">userAns=="ROCK"){
+    else if (computerSelection=="PAPER">playerSelection=="ROCK"){
       console.log(lose)
     }
     else {
       console.log(win)
     }
+    }
 
+    
+
+
+
+    
+    
 
 
     

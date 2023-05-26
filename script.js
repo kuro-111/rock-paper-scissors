@@ -38,17 +38,13 @@ Needs the ff:
         return (display);
         
       default:
-        return ("THAT'S AN ILLEGAL MOVE!")
+        return ("THAT'S AN ILLEGAL MOVE!");
         
 
     }
 
   }
    
-   let playerSelection = uIn();
-
-   console.log(uIn());
-
     //random input
 
     
@@ -60,38 +56,80 @@ Needs the ff:
       return (rps[random]);
     }
 
-    let computerSelection = getComputerChoice();
-
-    console.log(computerSelection);
-
-    
 
     
 
     function round(playerSelection, computerSelection) {
 
       let lose = "You lose! "+computerSelection+" beats "+playerSelection+" :(";
-      let win = "YOU WIN! :DD";
+      let win = "YOU WIN! "+playerSelection+" beats "+computerSelection+" :DD";
 
     if (computerSelection==playerSelection) {
-      console.log("IT'S A TIE!")
+      return("IT'S A TIE!")
     }
-    else if (computerSelection=="ROCK">playerSelection=="SCISSORS") {
-      console.log(lose)
+    else if ((computerSelection=="ROCK") && (playerSelection=="SCISSORS")) {
+      return(lose)
     }
-    else if (computerSelection=="SCISSORS">playerSelection=="PAPER") {
-      console.log(lose)
+    else if ((computerSelection=="SCISSORS") && (playerSelection=="PAPER")) {
+      return (lose)
     }
-    else if (computerSelection=="PAPER">playerSelection=="ROCK"){
-      console.log(lose)
+    else if ((computerSelection=="PAPER") && (playerSelection=="ROCK")){
+      return(lose)
     }
     else {
-      console.log(win)
+      return(win)
     }
     }
 
-    
+    // Game function: Use playRound() to play a 5 game round that keeps score and reports a winner or loser at the end.
+    function game() {
+  
+        let playerScore = 0;
+        let computerScore = 0;
 
+
+            for (i=0; i<5; i++) {
+
+              let newPlayerSelection = uIn();
+            
+              if (newPlayerSelection == "THAT'S AN ILLEGAL MOVE!") {
+                return ("THAT'S AN ILLEGAL MOVE!");
+              }
+
+              let newComputerSelection = getComputerChoice();
+             
+              let playResult = round(newPlayerSelection,newComputerSelection);
+
+              console.log(playResult);
+
+            if (playResult=="YOU WIN! "+newPlayerSelection+" beats "+newComputerSelection+" :DD") {
+             playerScore++;
+            }
+            else if(playResult=="You lose! "+newComputerSelection+" beats "+newPlayerSelection+" :(") {
+             computerScore++;
+            }
+            
+           
+            
+            }
+
+            console.log(playerScore)
+
+          
+          if (playerScore>computerScore) {
+            return "Ultimate winner woohoo!!!";
+          }
+          else if (playerScore==computerScore) {
+            return "Ultimate tie!!! :00";
+          }
+          else {
+            return "You loser :)";
+          }
+        // Compare player score to computer score, decide a winner
+        // Return the result of the game
+    }
+
+    console.log(game());
 
 
     

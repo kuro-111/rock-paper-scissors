@@ -20,10 +20,13 @@ Needs the ff:
 
     */
 
+   
+   
+   
     //user input 
-
     
-
+    
+    
     function uIn() {
 
     let user = prompt("Rock, Paper, Scissors!");
@@ -37,9 +40,9 @@ Needs the ff:
       case display == "PAPER":
         return (display);
         
-      default:
-        return ("THAT'S AN ILLEGAL MOVE!");
-        
+        default:
+          return ("THAT'S AN ILLEGAL MOVE!");
+          
 
     }
 
@@ -87,8 +90,7 @@ Needs the ff:
         let playerScore = 0;
         let computerScore = 0;
 
-
-            for (i=0; i<5; i++) {
+            //for (i=0; i<5; i++) {
 
               let newPlayerSelection = uIn();
             
@@ -130,6 +132,26 @@ Needs the ff:
     }
 
     console.log(game());
+
+    //function for taking the input of the user through button click
+
+    /*make clickButton store user input through eventListener
+      Take computer random choice after
+      Play game round after taking both  inputs
+      Add designs and/or other functions*/
+
+    function clickButton (event) {
+      const choices = document.querySelector(`button[data-key="${event.currentTarget.attributes['data-key'].value}"]`)
+      console.log(event);
+    }
+    
+    //Event listeners for the buttons
+
+    const buttons = document.querySelectorAll('button');
+    console.log(buttons);
+    buttons.forEach(button => button.addEventListener('click', clickButton));
+
+
 
 
     

@@ -25,32 +25,13 @@ Needs the ff:
    
     //user input 
     
-    
-    
-    function uIn() {
-
-    let user = prompt("Rock, Paper, Scissors!");
-
-    let display = user.toUpperCase();
-
-    switch(true) {
-      
-      case display == "ROCK":
-      case display == "SCISSORS":
-      case display == "PAPER":
-        return (display);
-        
-        default:
-          return ("THAT'S AN ILLEGAL MOVE!");
-          
-
-    }
-
-  }
    
     //random input
-
-    
+    /**
+     * Function to randomly select 'ROCK, PAPER, SCISSORS'
+     * 
+     * @returns {String} - Returns the randomly selected string.
+     */
     function getComputerChoice() {
       const rps = ["ROCK", "PAPER", "SCISSORS"];
 
@@ -62,21 +43,21 @@ Needs the ff:
 
     
 
-    function round(playerSelection, computerSelection) {
+    function round(playerChoice, randomComputerChoice) {
 
-      let lose = "You lose! "+computerSelection+" beats "+playerSelection+" :(";
-      let win = "YOU WIN! "+playerSelection+" beats "+computerSelection+" :DD";
+      let lose = "You lose! "+randomComputerChoice+" beats "+playerChoice+" :(";
+      let win = "YOU WIN! "+playerChoice+" beats "+randomComputerChoice+" :DD";
 
-    if (computerSelection==playerSelection) {
+    if (randomComputerChoice==playerChoice) {
       return("IT'S A TIE!")
     }
-    else if ((computerSelection=="ROCK") && (playerSelection=="SCISSORS")) {
+    else if ((randomComputerChoice=="ROCK") && (playerChoice=="SCISSORS")) {
       return(lose)
     }
-    else if ((computerSelection=="SCISSORS") && (playerSelection=="PAPER")) {
+    else if ((randomComputerChoice=="SCISSORS") && (playerChoice=="PAPER")) {
       return (lose)
     }
-    else if ((computerSelection=="PAPER") && (playerSelection=="ROCK")){
+    else if ((randomComputerChoice=="PAPER") && (playerChoice=="ROCK")){
       return(lose)
     }
     else {
@@ -85,7 +66,7 @@ Needs the ff:
     }
 
     // Game function: Use playRound() to play a 5 game round that keeps score and reports a winner or loser at the end.
-    function game() {
+    /*function game() {
   
         let playerScore = 0;
         let computerScore = 0;
@@ -113,7 +94,7 @@ Needs the ff:
             
            
             
-            }
+            //}
 
             console.log(playerScore)
 
@@ -132,19 +113,29 @@ Needs the ff:
     }
 
     console.log(game());
+    */
 
-    //function for taking the input of the user through button click
+    
 
-    /*make clickButton store user input through eventListener
-      Take computer random choice after
-      Play game round after taking both  inputs
-      Add designs and/or other functions*/
+    
+      //Add designs and/or other functions
 
+
+    //function for Player input, random computer choice and game round
     function clickButton (event) {
-      const choices = document.querySelector(`button[data-key="${event.currentTarget.attributes['data-key'].value}"]`)
+      const playerChoice = event.currentTarget.attributes['data-key'].value
       console.log(event);
+      let randomComputerChoice = getComputerChoice();
+      let playRound = round(playerChoice, randomComputerChoice);
+      console.log(playerChoice, randomComputerChoice, playRound);
+    //element to select the player Score for on HTML
+    //select omputer score and round next
+    //make Scores element change to tally scores
+      let playerScore = document.querySelector(`h3.PS`)
     }
     
+    
+
     //Event listeners for the buttons
 
     const buttons = document.querySelectorAll('button');

@@ -119,7 +119,9 @@ Needs the ff:
 
     
       //Add designs and/or other functions
-
+      let computerScoreCount = 0;
+      let playerScoreCount = 0;
+      let roundCounter = 0;
 
     //function for Player input, random computer choice and game round
     function clickButton (event) {
@@ -128,10 +130,47 @@ Needs the ff:
       let randomComputerChoice = getComputerChoice();
       let playRound = round(playerChoice, randomComputerChoice);
       console.log(playerChoice, randomComputerChoice, playRound);
-    //element to select the player Score for on HTML
-    //select omputer score and round next
-    //make Scores element change to tally scores
-      let playerScore = document.querySelector(`h3.PS`)
+      // Select the parent
+      const parentPop= document.querySelector('.popopUp');
+      // Creating a child element
+      const popUp = document.createElement('div');
+      
+      // Fill the child with stuff
+      popUp.textContent = `${playRound}`;
+      // Appending the child to the parent
+      parentPop.appendChild(popUp);
+
+    //select Score element from HTML
+      let playerScore = document.querySelector(`h3.PS`);
+      let computerScore =document.querySelector(`h3.CS`);
+      let roundCount = document.querySelector(`h3.RND`);
+
+        if (playRound == "You lose! "+randomComputerChoice+" beats "+playerChoice+" :(") {
+          //Tally score for when computer wins
+          computerScoreCount++;
+          computerScore.textContent = `Computer Score: ${computerScoreCount}`;
+          roundCounter++;
+          roundCount.textContent = `Round: ${roundCounter}`;
+        }
+
+        else if (playRound == "YOU WIN! "+playerChoice+" beats "+randomComputerChoice+" :DD") {
+          playerScoreCount++;
+          playerScore.textContent = `Player Score: ${playerScoreCount}`;
+          roundCounter++;
+          roundCount.textContent = `Round: ${roundCounter}`;
+        }
+
+        else if (playRound == "IT'S A TIE!") {
+          playerScore.textContent = `Player Score: ${playerScoreCount}`;
+          computerScore.textContent = `Computer Score: ${computerScoreCount}`;
+          roundCounter++;
+          roundCount.textContent = `Round: ${roundCounter}`;
+        }
+
+       
+        
+
+       
     }
     
     

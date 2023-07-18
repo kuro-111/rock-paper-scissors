@@ -118,7 +118,7 @@ Needs the ff:
     
 
     
-    //Add designs and/or other functions
+    //Player,computer and game round counter
     let computerScoreCount = 0;
     let playerScoreCount = 0;
     let roundCounter = 0;
@@ -207,11 +207,14 @@ Needs the ff:
               return tie;
             }
           }  
-          
           const callWinLose = winlose();
           
-          //display if player won or not after game ends 
-          
+          //display if player won or not after game ends  
+          const myPopUp = document.querySelector('.finalPop');
+           
+          setTimeout(() => {
+              myPopUp.classList.toggle('show')
+          }, 2000)
           
           //select parent node 
           const endParentPop = document.querySelector('.endPop');
@@ -222,6 +225,7 @@ Needs the ff:
           
           endParentPop.appendChild(endPoppy);
           return callWinLose;
+
         }
 
         

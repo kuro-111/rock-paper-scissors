@@ -118,10 +118,10 @@ Needs the ff:
     
 
     
-      //Add designs and/or other functions
-      let computerScoreCount = 0;
-      let playerScoreCount = 0;
-      let roundCounter = 0;
+    //Add designs and/or other functions
+    let computerScoreCount = 0;
+    let playerScoreCount = 0;
+    let roundCounter = 0;
 
     //function for Player input, random computer choice and game round
     function clickButton (event) {
@@ -130,29 +130,44 @@ Needs the ff:
       let randomComputerChoice = getComputerChoice();
       let playRound = round(playerChoice, randomComputerChoice);
       console.log(playerChoice, randomComputerChoice, playRound);
+      
       // Select the parent
-      const parentPop= document.querySelector('.popopUp');
+      const parentPop = document.querySelector('.popopUp');
+
+      // Select previous child
+      const selectFirstChild = document.querySelector('.oldChild');
+
+      // If old child exists, remove it.
+      if (selectFirstChild) {
+        // Remove previous child
+        const removeChild = parentPop.removeChild(selectFirstChild);
+      }
+      
       // Creating a child element
       const popUp = document.createElement('div');
       
       // Fill the child with stuff
       popUp.textContent = `${playRound}`;
+
       // Appending the child to the parent
       parentPop.appendChild(popUp);
 
-    //select Score element from HTML
+      popUp.classList.add('oldChild');
+      
+      
+      //select Score element from HTML
       let playerScore = document.querySelector(`h3.PS`);
       let computerScore =document.querySelector(`h3.CS`);
       let roundCount = document.querySelector(`h3.RND`);
-
-        if (playRound == "You lose! "+randomComputerChoice+" beats "+playerChoice+" :(") {
-          //Tally score for when computer wins
-          computerScoreCount++;
-          computerScore.textContent = `Computer Score: ${computerScoreCount}`;
-          roundCounter++;
-          roundCount.textContent = `Round: ${roundCounter}`;
+      
+      if (playRound == "You lose! "+randomComputerChoice+" beats "+playerChoice+" :(") {
+        //Tally score for when computer wins
+        computerScoreCount++;
+        computerScore.textContent = `Computer Score: ${computerScoreCount}`;
+        roundCounter++;
+        roundCount.textContent = `Round: ${roundCounter}`;
         }
-
+        
         else if (playRound == "YOU WIN! "+playerChoice+" beats "+randomComputerChoice+" :DD") {
           playerScoreCount++;
           playerScore.textContent = `Player Score: ${playerScoreCount}`;
@@ -166,13 +181,57 @@ Needs the ff:
           roundCounter++;
           roundCount.textContent = `Round: ${roundCounter}`;
         }
-
-       
+        
+        
+        
+        //Stops game after 5th round and decides winner 
         
 
-       
-    }
-    
+
+        if (roundCounter == 5) {
+          function winlose (){
+            const winner ="YOU'RE THE ULTIMATE WINNER!! WOOHOOO!!"
+            const loser ="YOU'RE THE ULTIMATE LOSER!! :d"
+            const tie ="ULTIMATE TIE!!! :00"
+            
+            if (playerScoreCount>computerScoreCount) {
+              
+              return winner;
+            }
+            else if(playerScoreCount<computerScoreCount) {
+              
+              return loser;
+            }
+            else if(playerScoreCount==computerScoreCount) {
+              
+              return tie;
+            }
+          }  
+          
+          const callWinLose = winlose();
+          
+          //display if player won or not after game ends 
+          
+          
+          //select parent node 
+          const endParentPop = document.querySelector('.endPop');
+          //create child
+          const endPoppy = document.createElement('div');
+          //put text inside  
+          endPoppy.textContent = `${callWinLose}`;
+          
+          endParentPop.appendChild(endPoppy);
+          return callWinLose;
+        }
+
+        
+      
+
+
+
+        
+      }
+      
     
 
     //Event listeners for the buttons

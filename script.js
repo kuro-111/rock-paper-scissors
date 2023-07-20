@@ -188,7 +188,7 @@ Needs the ff:
         
 
 
-        if (roundCounter == 5) {
+        if (roundCounter%5 == 0) {
           function winlose (){
             const winner ="YOU'RE THE ULTIMATE WINNER!! WOOHOOO!!"
             const loser ="YOU'RE THE ULTIMATE LOSER!! :d"
@@ -213,8 +213,22 @@ Needs the ff:
           const myPopUp = document.querySelector('.finalPop');
            
           setTimeout(() => {
-              myPopUp.classList.toggle('show')
-          }, 2000)
+              myPopUp.classList.add('show')
+          }, 3000)
+
+          const no = document.querySelector('.no');
+          no.addEventListener('click', () => {
+              console.log(":D");
+              myPopUp.classList.remove('show');
+              const noClick = document.querySelectorAll('.buttonk');
+              noClick.forEach(button => button.disabled = true);
+          })
+
+          const yes = document.querySelector('.yes');
+          yes.addEventListener('click', () => {
+            console.log(":d");
+            myPopUp.classList.remove('show');
+          })
           
           //select parent node 
           const endParentPop = document.querySelector('.endPop');
@@ -240,9 +254,9 @@ Needs the ff:
 
     //Event listeners for the buttons
 
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.buttonk');
     console.log(buttons);
-    buttons.forEach(button => button.addEventListener('click', clickButton));
+    buttons.forEach( buttonk => buttonk.addEventListener('click', clickButton));
 
 
 

@@ -130,6 +130,8 @@ Needs the ff:
       let randomComputerChoice = getComputerChoice();
       let playRound = round(playerChoice, randomComputerChoice);
       console.log(playerChoice, randomComputerChoice, playRound);
+
+
       
       // Select the parent
       const parentPop = document.querySelector('.popopUp');
@@ -153,6 +155,7 @@ Needs the ff:
       parentPop.appendChild(popUp);
 
       popUp.classList.add('oldChild');
+      
       
       
       //select Score element from HTML
@@ -211,10 +214,11 @@ Needs the ff:
           
           //display if player won or not after game ends  
           const myPopUp = document.querySelector('.finalPop');
+
            
           setTimeout(() => {
               myPopUp.classList.add('show')
-          }, 3000)
+          }, 2000)
 
           const no = document.querySelector('.no');
           no.addEventListener('click', () => {
@@ -222,22 +226,26 @@ Needs the ff:
               myPopUp.classList.remove('show');
               const noClick = document.querySelectorAll('.buttonk');
               noClick.forEach(button => button.disabled = true);
+              const removeFirstEnd = endParentPop.removeChild(endPoppy);
           })
 
           const yes = document.querySelector('.yes');
           yes.addEventListener('click', () => {
             console.log(":d");
             myPopUp.classList.remove('show');
+            const removeFirstEnd = endParentPop.removeChild(endPoppy);
           })
           
           //select parent node 
           const endParentPop = document.querySelector('.endPop');
+
           //create child
           const endPoppy = document.createElement('div');
           //put text inside  
           endPoppy.textContent = `${callWinLose}`;
           
           endParentPop.appendChild(endPoppy);
+
           return callWinLose;
 
         }
